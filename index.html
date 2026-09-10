@@ -10,6 +10,7 @@
 </head>
 <body>
 
+  <!-- Toolbar: language switch (FR/EN) + PDF download button. Screen only, hidden in print.css -->
   <div class="toolbar">
     <div class="toolbar-inner">
       <div class="lang-switch" role="group" aria-label="Langue / Language">
@@ -22,6 +23,7 @@
 
   <div class="page">
 
+    <!-- Header: name, title, contact info -->
     <header class="header">
       <div class="header-main">
         <h1>Julien Cotte</h1>
@@ -36,6 +38,7 @@
       <p class="location" data-i18n="header.location">France / Remote — Disponible septembre 2026</p>
     </header>
 
+    <!-- Pitch: 4 short sentences, each in its own <p> so they render as separate lines -->
     <div class="pitch">
       <p data-i18n="pitch.s1">Développeur iOS issu d'une reconversion professionnelle, avec deux ans d'expérience en environnement enterprise bancaire/assurance.</p>
       <p data-i18n="pitch.s2">Ma formation est entièrement basée sur des projets concrets : chaque compétence est validée par un projet réel devant un jury professionnel.</p>
@@ -45,8 +48,10 @@
 
     <div class="layout">
 
+      <!-- Sidebar: skills, languages, interests -->
       <aside class="sidebar">
 
+        <!-- Skills, grouped by category -->
         <section class="section">
           <h2 data-i18n="skills.heading">Compétences</h2>
           <div class="skill-group">
@@ -87,6 +92,7 @@
           </div>
         </section>
 
+        <!-- Languages -->
         <section class="section">
           <h2 data-i18n="languages.heading">Langues</h2>
           <ul class="plain-list">
@@ -95,6 +101,7 @@
           </ul>
         </section>
 
+        <!-- Interests -->
         <section class="section">
           <h2 data-i18n="interests.heading">Centres d'intérêt</h2>
           <p data-i18n="interests.text">Guitare (en apprentissage), randonnée, cuisine.</p>
@@ -102,8 +109,10 @@
 
       </aside>
 
+      <!-- Main content: professional experience, personal projects, education, prior experience -->
       <main class="main">
 
+        <!-- Professional experience -->
         <section class="section">
           <h2 data-i18n="experience.heading">Expérience professionnelle</h2>
           <article class="entry">
@@ -120,6 +129,7 @@
           </article>
         </section>
 
+        <!-- Personal projects -->
         <section class="section">
           <h2 data-i18n="projects.heading">Projets personnels</h2>
 
@@ -175,6 +185,7 @@
           <p class="packages" data-i18n="projects.packages">Swift Packages publiés : CustomTextFields, CustomLabels</p>
         </section>
 
+        <!-- Education -->
         <section class="section">
           <h2 data-i18n="education.heading">Formation</h2>
           <article class="entry entry-compact">
@@ -204,6 +215,7 @@
           </article>
         </section>
 
+        <!-- Prior (non-tech) experience -->
         <section class="section">
           <h2 data-i18n="prior.heading">Expériences antérieures</h2>
           <ul class="prior-jobs">
@@ -218,6 +230,7 @@
     </div>
   </div>
 
+<!-- i18n.js must load first: it defines `translations`, which script.js reads on startup -->
 <script src="i18n.js"></script>
 <script src="script.js"></script>
 </body>

@@ -1,22 +1,28 @@
+/* Print-only overrides, loaded on top of style.css (see the <link media="print"> in index.html).
+   Goal: fit the whole resume on a single A4 page, as required by French CV conventions.
+   Same class names as style.css - this file only shrinks sizes/spacing and removes
+   screen-only decoration (shadows, toolbar), it doesn't change the layout structure. */
+
 @page {
   size: A4;
   margin: 10mm 12mm;
 }
 
+/* The FR/EN + PDF toolbar is a screen control, it has no place on a printed page. */
 .toolbar {
   display: none;
 }
 
 body {
   background: #fff;
-  font-size: 9.5px;
+  font-size: 9.5px; /* much smaller than on screen - this is what makes one page possible */
   line-height: 1.3;
 }
 
 .page {
   max-width: none;
   margin: 0;
-  box-shadow: none;
+  box-shadow: none; /* drop-shadow only makes sense on a screen background, not on paper */
 }
 
 .header {
@@ -52,7 +58,7 @@ body {
 }
 
 .layout {
-  grid-template-columns: 150px 1fr;
+  grid-template-columns: 150px 1fr; /* narrower sidebar than on screen, to save horizontal space */
 }
 
 .sidebar {
@@ -67,7 +73,7 @@ body {
 
 .section {
   margin-bottom: 10px;
-  break-inside: avoid;
+  break-inside: avoid; /* tells the printer/PDF engine not to split a section across two pages */
 }
 
 .section h2 {
@@ -82,7 +88,7 @@ body {
 }
 
 .skill-group {
-  border: none;
+  border: none; /* the card look from style.css is dropped here, too heavy for this scale */
   border-radius: 0;
   padding: 0;
   margin-bottom: 4px;
@@ -100,7 +106,7 @@ body {
 .entry {
   margin-bottom: 7px;
   padding-left: 8px;
-  break-inside: avoid;
+  break-inside: avoid; /* keeps one job/project block from being cut between two pages */
 }
 
 .entry-compact {
@@ -151,6 +157,8 @@ body {
   margin-bottom: 1px;
 }
 
+/* Links print as plain black text - a blue underline is a screen/hyperlink convention
+   that doesn't help on paper, and printers often render colored text poorly anyway. */
 .contact a,
 .entry-link a {
   color: inherit;

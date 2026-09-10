@@ -1,3 +1,4 @@
+/* Design tokens: change a color/font here once, it updates everywhere it's used via var(--name). */
 :root {
   --color-bg: #eef1f4;
   --color-paper: #ffffff;
@@ -10,9 +11,11 @@
   --color-accent-light: #e7f0f6;
   --color-rule: #dde1e7;
   --font-sans: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-  --page-width: 210mm;
+  --page-width: 210mm; /* matches an A4 page so the on-screen width previews the print layout */
 }
 
+/* Makes padding/border count *inside* an element's declared width instead of adding to it
+   (closer to how UIKit/SwiftUI frames behave). Applied to every element. */
 * {
   box-sizing: border-box;
 }
@@ -26,10 +29,10 @@ body {
   line-height: 1.5;
 }
 
-/* Toolbar (screen only) */
+/* Toolbar (screen only, hidden in print.css) */
 
 .toolbar {
-  position: sticky;
+  position: sticky; /* stays pinned at the top of the viewport while scrolling */
   top: 0;
   z-index: 10;
   background: var(--color-primary);
@@ -40,11 +43,11 @@ body {
   max-width: var(--page-width);
   margin: 0 auto;
   padding: 10px 24px;
-  display: flex;
+  display: flex; /* lays out language switch + PDF button on one row */
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* drops to two rows on narrow screens instead of overflowing */
 }
 
 .lang-switch {
@@ -67,6 +70,7 @@ body {
   opacity: 0.7;
 }
 
+/* Applied/removed by script.js on the currently selected FR/EN button. */
 .lang-btn.is-active {
   background: #fff;
   color: var(--color-primary);
@@ -88,11 +92,11 @@ body {
   background: rgba(255, 255, 255, 0.15);
 }
 
-/* Page */
+/* Page (the white "sheet" containing the whole resume) */
 
 .page {
   max-width: var(--page-width);
-  margin: 24px auto 48px;
+  margin: 24px auto 48px; /* auto left/right centers the sheet in the browser window */
   background: var(--color-paper);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.06);
 }
@@ -104,10 +108,12 @@ h1, h2, h3 {
 }
 
 .header {
-  position: relative;
+  position: relative; /* needed so the ::after gradient bar below can be positioned against it */
   padding: 32px 40px 22px;
 }
 
+/* Decorative gradient bar under the header, drawn as a fake element instead of
+   a real HTML tag - ::after generates it purely in CSS. */
 .header::after {
   content: "";
   position: absolute;
@@ -134,7 +140,7 @@ h1, h2, h3 {
 
 .contact {
   list-style: none;
-  display: flex;
+  display: flex; /* contact items sit in a row instead of stacking like a normal <ul> */
   flex-wrap: wrap;
   gap: 4px 14px;
   margin: 0 0 6px;
@@ -143,6 +149,7 @@ h1, h2, h3 {
   color: var(--color-muted);
 }
 
+/* Adds a "•" separator between contact items without needing an extra HTML element per bullet. */
 .contact li:not(:last-child)::after {
   content: "\2022";
   margin-left: 14px;
@@ -170,7 +177,7 @@ h1, h2, h3 {
 }
 
 .pitch p {
-  margin: 0 0 8px;
+  margin: 0 0 8px; /* the bottom margin is what creates the "one sentence per line" spacing */
   color: var(--color-text);
   font-size: 14px;
 }
@@ -179,11 +186,11 @@ h1, h2, h3 {
   margin-bottom: 0;
 }
 
-/* Two-column layout */
+/* Two-column layout (sidebar + main content) */
 
 .layout {
-  display: grid;
-  grid-template-columns: 240px 1fr;
+  display: grid; /* CSS Grid: splits the row into a fixed sidebar and a flexible main column */
+  grid-template-columns: 240px 1fr; /* sidebar = 240px fixed, main = remaining space (1fr) */
 }
 
 .sidebar {
@@ -205,7 +212,7 @@ h1, h2, h3 {
 }
 
 .section h2 {
-  display: flex;
+  display: flex; /* aligns the colored square marker (::before) next to the text */
   align-items: center;
   gap: 8px;
   font-size: 12.5px;
@@ -217,15 +224,17 @@ h1, h2, h3 {
   border-bottom: 1px solid var(--color-rule);
 }
 
+/* Small colored square drawn before each section title, purely with CSS (no image/icon file). */
 .section h2::before {
   content: "";
   width: 8px;
   height: 8px;
-  flex: none;
+  flex: none; /* prevents flexbox from shrinking this square when the title text is long */
   border-radius: 2px;
   background: var(--color-accent);
 }
 
+/* Sidebar skill blocks styled as small cards. */
 .skill-group {
   background: var(--color-card);
   border: 1px solid var(--color-rule);
@@ -252,6 +261,7 @@ h1, h2, h3 {
   line-height: 1.4;
 }
 
+/* Each experience/project block gets a thin colored left border, giving a subtle "timeline" feel. */
 .entry {
   margin-bottom: 16px;
   padding-left: 12px;
@@ -269,17 +279,18 @@ h1, h2, h3 {
 }
 
 .entry-head {
-  display: flex;
+  display: flex; /* title on the left, date on the right, same row */
   justify-content: space-between;
   align-items: baseline;
   gap: 12px;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* if the title is long, the date drops below instead of overlapping */
 }
 
 .entry-head h3 {
   font-size: 15px;
 }
 
+/* Rounded "badge" look for dates (border-radius: 999px = fully pill-shaped). */
 .dates {
   font-size: 11.5px;
   font-weight: 600;
@@ -287,7 +298,7 @@ h1, h2, h3 {
   background: var(--color-accent-light);
   padding: 2px 9px;
   border-radius: 999px;
-  white-space: nowrap;
+  white-space: nowrap; /* keeps a date range like "2020-2022" from wrapping mid-line */
 }
 
 .entry-sub {
@@ -353,6 +364,8 @@ h1, h2, h3 {
   margin-bottom: 4px;
 }
 
+/* Below 700px (phones/small tablets): collapse the two-column layout to one column
+   and reduce side padding so content doesn't feel cramped against the screen edges. */
 @media (max-width: 700px) {
   .page {
     margin: 0;
@@ -368,7 +381,7 @@ h1, h2, h3 {
   }
 
   .layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* sidebar stacks above main instead of sitting beside it */
   }
 
   .sidebar {

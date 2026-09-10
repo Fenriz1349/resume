@@ -1,3 +1,6 @@
+// Text content for every [data-i18n="..."] key used in index.html, keyed by language.
+// Read and applied by script.js (see applyLanguage). Keys are grouped by section
+// (header, pitch, skills, experience, projects, education, prior, ...).
 const translations = {
   fr: {
     "toolbar.pdf": "Télécharger en PDF",
