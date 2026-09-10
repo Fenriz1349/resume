@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0](https://github.com/Fenriz1349/resume/compare/v0.3.0...v1.0.0) (2026-09-10)
+
+
+### Miscellaneous Chores
+
+* mark v1.0.0 as the first stable release ([5397120](https://github.com/Fenriz1349/resume/commit/5397120c7cb98527d0e8a80ef2096b6c4d6156ac))
+
 ## [0.3.0](https://github.com/Fenriz1349/resume/compare/v0.2.0...v0.3.0) (2026-09-10)
 
 
