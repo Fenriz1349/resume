@@ -1,6 +1,12 @@
 // Text content for every [data-i18n="..."] key used in index.html, keyed by language.
 // Read and applied by script.js (see applyLanguage). Keys are grouped by section
 // (header, pitch, skills, experience, projects, education, prior, ...).
+//
+// This is plain data (could be a .json file), but it's kept as a .js file on purpose:
+// a <script src="..."> can load it instantly as a global variable, with no network
+// request. A real .json file would need fetch(), which is asynchronous and gets
+// blocked by browsers when the page is opened directly from disk (file://) instead
+// of through a server - not worth the complexity for a static site with no build step.
 const translations = {
   fr: {
     "toolbar.pdf": "Télécharger en PDF",

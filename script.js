@@ -1,30 +1,30 @@
 // Switches every [data-i18n] element to the given language and remembers the choice.
 // `translations` comes from i18n.js, loaded before this script.
-function applyLanguage(lang) {
-  const dict = translations[lang];
-  document.querySelectorAll("[data-i18n]").forEach((el) => {
-    const key = el.getAttribute("data-i18n");
-    if (dict[key]) {
-      el.textContent = dict[key];
+function applyLanguage(language) {
+  const dictionary = translations[language];
+  document.querySelectorAll("[data-i18n]").forEach((element) => {
+    const translationKey = element.getAttribute("data-i18n");
+    if (dictionary[translationKey]) {
+      element.textContent = dictionary[translationKey];
     }
   });
-  document.documentElement.lang = lang;
+  document.documentElement.lang = language;
 
   // Highlight the active FR/EN button.
-  document.querySelectorAll(".lang-btn").forEach((btn) => {
-    btn.classList.toggle("is-active", btn.dataset.lang === lang);
+  document.querySelectorAll(".lang-btn").forEach((languageButton) => {
+    languageButton.classList.toggle("is-active", languageButton.dataset.lang === language);
   });
 
   try {
-    localStorage.setItem("resume-lang", lang);
-  } catch (e) {
+    localStorage.setItem("resume-lang", language);
+  } catch (error) {
     // localStorage can be unavailable (private browsing, disabled storage) - ignore.
   }
 }
 
 // Language toggle buttons in the toolbar.
-document.querySelectorAll(".lang-btn").forEach((btn) => {
-  btn.addEventListener("click", () => applyLanguage(btn.dataset.lang));
+document.querySelectorAll(".lang-btn").forEach((languageButton) => {
+  languageButton.addEventListener("click", () => applyLanguage(languageButton.dataset.lang));
 });
 
 // "Download PDF" opens the browser print dialog, which uses print.css
@@ -34,13 +34,13 @@ document.getElementById("pdf-btn").addEventListener("click", () => {
 });
 
 // On load, restore the last chosen language if we have one, otherwise default to French.
-let initialLang = "fr";
+let initialLanguage = "fr";
 try {
-  const saved = localStorage.getItem("resume-lang");
-  if (saved === "fr" || saved === "en") {
-    initialLang = saved;
+  const savedLanguage = localStorage.getItem("resume-lang");
+  if (savedLanguage === "fr" || savedLanguage === "en") {
+    initialLanguage = savedLanguage;
   }
-} catch (e) {
+} catch (error) {
   // localStorage can be unavailable (private browsing, disabled storage) - ignore.
 }
-applyLanguage(initialLang);
+applyLanguage(initialLanguage);
