@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julien Cotte — Développeur iOS</title>
+<meta name="description" content="CV de Julien Cotte, développeur iOS spécialisé Clean Architecture, SwiftUI et CI/CD.">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="print.css" media="print">
+</head>
+<body>
+
+  <!-- Toolbar: language switch (FR/EN) + PDF download button. Screen only, hidden in print.css -->
+  <div class="toolbar">
+    <div class="toolbar-inner">
+      <div class="lang-switch" role="group" aria-label="Langue / Language">
+        <button type="button" class="lang-btn is-active" data-lang="fr">FR</button>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <button type="button" class="pdf-btn" id="pdf-btn" data-i18n="toolbar.pdf">Télécharger en PDF</button>
+    </div>
+  </div>
+
+  <div class="page">
+
+    <!-- Header: name, title, contact info -->
+    <header class="header">
+      <div class="header-main">
+        <h1>Julien Cotte</h1>
+        <p class="title" data-i18n="header.title">Développeur iOS</p>
+      </div>
+      <ul class="contact">
+        <li><a href="mailto:julien.cotte@live.fr">julien.cotte@live.fr</a></li>
+        <li data-i18n="contact.phone">Téléphone sur demande</li>
+        <li><a href="https://www.linkedin.com/in/julien-c-7a6141292/" target="_blank" rel="noopener">linkedin.com/in/julien-cotte</a></li>
+        <li><a href="https://github.com/Fenriz1349" target="_blank" rel="noopener">github.com/Fenriz1349</a></li>
+      </ul>
+      <p class="location" data-i18n="header.location">France / Remote — Disponible septembre 2026</p>
+    </header>
+
+    <!-- Pitch: 4 short sentences, each in its own <p> so they render as separate lines -->
+    <div class="pitch">
+      <p data-i18n="pitch.s1">Développeur iOS issu d'une reconversion professionnelle, avec deux ans d'expérience en environnement enterprise bancaire/assurance.</p>
+      <p data-i18n="pitch.s2">Ma formation est entièrement basée sur des projets concrets : chaque compétence est validée par un projet réel devant un jury professionnel.</p>
+      <p data-i18n="pitch.s3">Je conçois mes projets personnels avec une architecture propre (Clean Architecture), un code maintenable et des pipelines CI/CD robustes, sur les frameworks les plus récents.</p>
+      <p data-i18n="pitch.s4">Mon expérience professionnelle sur une codebase legacy de 11 ans m'a aussi appris à lire et faire évoluer du code ancien, avec une attention particulière à la maintenabilité, à la documentation et à la limitation de l'impact des changements.</p>
+    </div>
+
+    <div class="layout">
+
+      <!-- Sidebar: skills, languages, interests -->
+      <aside class="sidebar">
+
+        <!-- Skills, grouped by category -->
+        <section class="section">
+          <h2 data-i18n="skills.heading">Compétences</h2>
+          <div class="skill-group">
+            <h3 data-i18n="skills.mobile.label">Mobile</h3>
+            <p>Swift · SwiftUI · UIKit · SwiftData · Combine · async/await</p>
+          </div>
+          <div class="skill-group">
+            <h3 data-i18n="skills.architecture.label">Architecture</h3>
+            <p data-i18n="skills.architecture.value">Clean Architecture, MVVM, UseCases, injection de dépendances, modularité</p>
+          </div>
+          <div class="skill-group">
+            <h3 data-i18n="skills.backend.label">Backend / Cloud</h3>
+            <p>Firebase (Auth, Firestore, Emulators)</p>
+          </div>
+          <div class="skill-group">
+            <h3 data-i18n="skills.quality.label">Qualité</h3>
+            <p data-i18n="skills.quality.value">SwiftLint, XCTest (unitaires, intégration, E2E, UI), SonarCloud</p>
+          </div>
+          <div class="skill-group">
+            <h3>CI/CD</h3>
+            <p data-i18n="skills.cicd.value">GitHub Actions (pipeline multi-jobs, tests parallèles, versioning release-please)</p>
+          </div>
+          <div class="skill-group">
+            <h3 data-i18n="skills.security.label">Sécurité</h3>
+            <p>OAuth 2.0, ASWebAuthenticationSession, Keychain</p>
+          </div>
+          <div class="skill-group">
+            <h3 data-i18n="skills.tools.label">Outils</h3>
+            <p>Xcode, Git, Conventional Commits, Agile/Scrum</p>
+          </div>
+          <div class="skill-group">
+            <h3>IA</h3>
+            <p data-i18n="skills.ai.value">Utilisation professionnelle des outils IA générative (Claude, Bob — IA agentique IBM)</p>
+          </div>
+          <div class="skill-group">
+            <h3 data-i18n="skills.bases.label">Bases</h3>
+            <p>Kotlin, React, JavaScript, Python</p>
+          </div>
+        </section>
+
+        <!-- Languages -->
+        <section class="section">
+          <h2 data-i18n="languages.heading">Langues</h2>
+          <ul class="plain-list">
+            <li data-i18n="languages.en">Anglais — Très bon (technique et professionnel)</li>
+            <li data-i18n="languages.de">Allemand — Basique</li>
+          </ul>
+        </section>
+
+        <!-- Interests -->
+        <section class="section">
+          <h2 data-i18n="interests.heading">Centres d'intérêt</h2>
+          <p data-i18n="interests.text">Guitare (en apprentissage), randonnée, cuisine.</p>
+        </section>
+
+      </aside>
+
+      <!-- Main content: professional experience, personal projects, education, prior experience -->
+      <main class="main">
+
+        <!-- Professional experience -->
+        <section class="section">
+          <h2 data-i18n="experience.heading">Expérience professionnelle</h2>
+          <article class="entry">
+            <div class="entry-head">
+              <h3 data-i18n="experience.axa.title">Alternant développeur iOS — IBM / AXA</h3>
+              <span class="dates">Sept 2024 – Sept 2026</span>
+            </div>
+            <p class="entry-sub" data-i18n="experience.axa.sub">Projet Discovery — application mobile B2B utilisée par les commerciaux AXA en rendez-vous client</p>
+            <ul>
+              <li data-i18n="experience.axa.b1">Intervention sur une codebase UIKit/Objective-C de 11 ans sans documentation initiale</li>
+              <li data-i18n="experience.axa.b2">Rétro-ingénierie, refactorisation de modules legacy, correction de bugs, nouvelles fonctionnalités</li>
+              <li data-i18n="experience.axa.b3">Rédaction de documentation technique, méthode Agile, environnement multi-équipes</li>
+            </ul>
+          </article>
+        </section>
+
+        <!-- Personal projects -->
+        <section class="section">
+          <h2 data-i18n="projects.heading">Projets personnels</h2>
+
+          <article class="entry">
+            <div class="entry-head">
+              <h3>CatLedger</h3>
+              <span class="dates" data-i18n="projects.ongoing">En cours</span>
+            </div>
+            <p class="entry-sub" data-i18n="projects.catledger.sub">Gestion financière personnelle iOS/iPadOS</p>
+            <ul>
+              <li data-i18n="projects.catledger.b1">Clean Architecture par feature (Data / Domain / Presentation), DIContainer</li>
+              <li data-i18n="projects.catledger.b2">Firebase Auth + Firestore, tests unitaires et E2E contre Firebase Emulators</li>
+              <li data-i18n="projects.catledger.b3">Pipeline CI/CD GitHub Actions complet : lint, tests parallèles, versioning sémantique, SonarCloud</li>
+            </ul>
+            <p class="entry-link"><a href="https://github.com/Fenriz1349/CatLedger" target="_blank" rel="noopener">github.com/Fenriz1349/CatLedger</a></p>
+          </article>
+
+          <article class="entry">
+            <div class="entry-head">
+              <h3>MediStock</h3>
+            </div>
+            <p class="entry-sub" data-i18n="projects.medistock.sub">Refonte complète d'une app iOS de gestion de stock pharmaceutique</p>
+            <ul>
+              <li data-i18n="projects.medistock.b1">Réécriture MVVM + Clean Architecture sur base de code non structurée</li>
+              <li data-i18n="projects.medistock.b2">Firebase : tri/filtrage serveur, lazy loading, pagination ; tests unitaires, intégration et UI ; accessibilité VoiceOver</li>
+            </ul>
+            <p class="entry-link"><a href="https://github.com/Fenriz1349/MediStock" target="_blank" rel="noopener">github.com/Fenriz1349/MediStock</a></p>
+          </article>
+
+          <article class="entry">
+            <div class="entry-head">
+              <h3>Joiefull</h3>
+            </div>
+            <p class="entry-sub" data-i18n="projects.joiefull.sub">App iOS catalogue, focus accessibilité et responsive</p>
+            <ul>
+              <li data-i18n="projects.joiefull.b1">VoiceOver, Dynamic Type, contrastes conformes HIG Apple</li>
+              <li data-i18n="projects.joiefull.b2">Interface responsive iPhone &amp; iPad, MVVM, API REST async/await</li>
+            </ul>
+            <p class="entry-link"><a href="https://github.com/Fenriz1349/joiefull" target="_blank" rel="noopener">github.com/Fenriz1349/joiefull</a></p>
+          </article>
+
+          <article class="entry">
+            <div class="entry-head">
+              <h3>OctoTrack</h3>
+            </div>
+            <p class="entry-sub" data-i18n="projects.octotrack.sub">Client iOS pour l'API GitHub</p>
+            <ul>
+              <li data-i18n="projects.octotrack.b1">OAuth 2.0 (ASWebAuthenticationSession), tokens en Keychain, localisation FR/EN</li>
+            </ul>
+            <p class="entry-link"><a href="https://github.com/Fenriz1349/OctoTrack" target="_blank" rel="noopener">github.com/Fenriz1349/OctoTrack</a></p>
+          </article>
+
+          <p class="packages" data-i18n="projects.packages">Swift Packages publiés : CustomTextFields, CustomLabels</p>
+        </section>
+
+        <!-- Education -->
+        <section class="section">
+          <h2 data-i18n="education.heading">Formation</h2>
+          <article class="entry entry-compact">
+            <div class="entry-head">
+              <h3 data-i18n="education.oc.title">Développeur d'application iOS — OpenClassrooms</h3>
+              <span class="dates" data-i18n="education.oc.dates">2024 – 2026, jury en attente</span>
+            </div>
+            <p class="entry-sub" data-i18n="education.oc.sub">Formation par projets concrets, chaque compétence validée par un jury professionnel</p>
+          </article>
+          <article class="entry entry-compact">
+            <div class="entry-head">
+              <h3 data-i18n="education.simplon.title">Apple Foundation Program + Extended, Développement Mobile — Simplon</h3>
+              <span class="dates">2024</span>
+            </div>
+          </article>
+          <article class="entry entry-compact">
+            <div class="entry-head">
+              <h3>MS Data Analyst — GRETA Lille</h3>
+              <span class="dates">2023</span>
+            </div>
+          </article>
+          <article class="entry entry-compact">
+            <div class="entry-head">
+              <h3 data-i18n="education.dut.title">DUT STID — Université Lille 2</h3>
+              <span class="dates">2010</span>
+            </div>
+          </article>
+        </section>
+
+        <!-- Prior (non-tech) experience -->
+        <section class="section">
+          <h2 data-i18n="prior.heading">Expériences antérieures</h2>
+          <ul class="prior-jobs">
+            <li><span class="job-title" data-i18n="prior.barman">Barman / Responsable de point de vente</span> — Pico Bistro <span class="dates">2020–2022</span></li>
+            <li><span class="job-title">Brand Promoter B2B</span> — MGS <span class="dates">2018</span></li>
+            <li><span class="job-title" data-i18n="prior.butcher">Boucher</span> — Carrefour Market <span class="dates">2013–2017</span></li>
+          </ul>
+          <p class="entry-sub" data-i18n="prior.transferable">Compétences transverses : management d'équipe, relation client B2B, gestion opérationnelle</p>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+<!-- i18n.js must load first: it defines `translations`, which script.js reads on startup -->
+<script src="i18n.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
