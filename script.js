@@ -27,10 +27,11 @@ document.querySelectorAll(".lang-btn").forEach((languageButton) => {
   languageButton.addEventListener("click", () => applyLanguage(languageButton.dataset.lang));
 });
 
-// "Download PDF" opens the browser print dialog, which uses print.css
-// and lets the user save it as a PDF (no external library needed).
+// "Download PDF" generates and downloads a real, text-based PDF directly (see pdf.js) -
+// no browser print dialog, so no OS/browser print header and identical behavior on
+// Windows and Mac.
 document.getElementById("pdf-btn").addEventListener("click", () => {
-  window.print();
+  generateResumePdf();
 });
 
 // On load, restore the last chosen language if we have one, otherwise default to French.
