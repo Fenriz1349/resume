@@ -10,8 +10,38 @@
   --color-accent: #3f7ca6;
   --color-accent-light: #e7f0f6;
   --color-rule: #dde1e7;
+  /* Fixed navy, not overridden in dark mode: the toolbar is a solid bar with white text
+     in both themes, it doesn't need to track --color-primary's dark-mode brightening. */
+  --color-toolbar-bg: #1b4965;
   --font-sans: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  /* Gothic/blackletter display fonts, used only for the name and section titles below -
+     body text (paragraphs, lists, skill values) stays on --font-sans for readability. */
+  --font-name: "UnifrakturMaguntia", Georgia, serif;
+  --font-heading: "Pirata One", Georgia, serif;
   --page-width: 210mm; /* matches an A4 page so the on-screen width previews the print layout */
+}
+
+/* Follows the visitor's OS-level light/dark preference - no manual toggle, just the
+   browser's standard prefers-color-scheme media query. Only the color tokens change;
+   every rule below keeps working unmodified since they all read colors through var(). */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #15191e;
+    --color-paper: #1b2127;
+    --color-sidebar: #20262d;
+    --color-card: #242b33;
+    --color-text: #e8ecf1;
+    --color-muted: #9aa4b2;
+    --color-primary: #4da6ff;
+    --color-accent: #38bdf8;
+    --color-accent-light: #1e3a52;
+    --color-rule: #333c46;
+  }
+
+  .page {
+    box-shadow: none;
+    border: 1px solid var(--color-rule);
+  }
 }
 
 /* Makes padding/border count *inside* an element's declared width instead of adding to it
@@ -35,7 +65,7 @@ body {
   position: sticky; /* stays pinned at the top of the viewport while scrolling */
   top: 0;
   z-index: 10;
-  background: var(--color-primary);
+  background: var(--color-toolbar-bg);
   color: #fff;
 }
 
@@ -125,17 +155,19 @@ h1, h2, h3 {
 }
 
 .header-main h1 {
-  font-size: 30px;
+  font-family: var(--font-name);
+  font-weight: 400; /* UnifrakturMaguntia only ships a single weight */
+  font-size: 40px; /* blackletter reads smaller than a sans-serif at the same size */
   letter-spacing: 0.3px;
 }
 
 .title {
   margin: 3px 0 14px;
-  color: var(--color-accent);
-  font-size: 16px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-weight: 400; /* Pirata One only ships a single weight */
+  font-size: 19px; /* Pirata One reads smaller than the sans-serif at the same size */
+  letter-spacing: 0.02em;
 }
 
 .contact {
@@ -223,32 +255,49 @@ h1, h2, h3 {
   display: flex; /* aligns the colored square marker (::before) next to the text */
   align-items: center;
   gap: 8px;
-  font-size: 12.5px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  font-family: var(--font-heading);
+  font-weight: 400; /* Pirata One only ships a single weight */
+  font-size: 16px; /* Pirata One reads smaller than the sans-serif at the same size */
+  letter-spacing: 0.02em;
   color: var(--color-primary);
   padding-bottom: 6px;
   margin-bottom: 14px;
   border-bottom: 1px solid var(--color-rule);
 }
 
-/* Small colored square drawn before each section title, purely with CSS (no image/icon file). */
+/* Small colored diamond drawn before each section title, purely with CSS (no image/icon
+   file) - a flat square read as too modern/flat next to the blackletter heading font, a
+   rotated square (diamond) fits the more ornamental, old-world feel instead. */
 .section h2::before {
   content: "";
-  width: 8px;
-  height: 8px;
-  flex: none; /* prevents flexbox from shrinking this square when the title text is long */
-  border-radius: 2px;
+  width: 7px;
+  height: 7px;
+  flex: none; /* prevents flexbox from shrinking this marker when the title text is long */
+  transform: rotate(45deg);
   background: var(--color-accent);
 }
 
-/* Sidebar skill blocks styled as small cards. */
+/* Sidebar skill blocks styled as small cards, with the top-right corner cut off (like a
+   torn/folded parchment tag) instead of rounded. A plain `border` can't follow a clipped
+   diagonal edge, so the border is faked with a ::before pseudo-element: a slightly larger
+   copy of the same cut shape, filled with the border color and sitting behind the card -
+   it peeks out by 1px all the way around, including along the diagonal. */
 .skill-group {
+  position: relative;
+  isolation: isolate; /* keeps the ::before's z-index: -1 behind this card only, not the whole page */
   background: var(--color-card);
-  border: 1px solid var(--color-rule);
-  border-radius: 8px;
-  padding: 8px 10px;
-  margin-bottom: 8px;
+  padding: 13px 10px 8px;
+  margin-bottom: 9px;
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+}
+
+.skill-group::before {
+  content: "";
+  position: absolute;
+  inset: -1px; /* 1px border thickness on every side */
+  z-index: -1;
+  background: var(--color-rule);
+  clip-path: polygon(0 0, calc(100% - 17px) 0, 100% 17px, 100% 100%, 0 100%);
 }
 
 .skill-group:last-child {
