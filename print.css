@@ -8,6 +8,24 @@
   margin: 10mm 12mm;
 }
 
+/* Printed paper has no "dark mode": force the light palette regardless of the visitor's
+   OS setting, otherwise someone printing while their system is in dark mode would get
+   near-white text on white paper (invisible) or waste ink on a dark page background.
+   This :root block is unconditional and loads after style.css's, so it wins the cascade
+   even when style.css's @media (prefers-color-scheme: dark) block also matches. */
+:root {
+  --color-bg: #eef1f4;
+  --color-paper: #ffffff;
+  --color-sidebar: #f3f6f8;
+  --color-card: #ffffff;
+  --color-text: #1f2430;
+  --color-muted: #5b6270;
+  --color-primary: #1b4965;
+  --color-accent: #3f7ca6;
+  --color-accent-light: #e7f0f6;
+  --color-rule: #dde1e7;
+}
+
 /* The FR/EN + PDF toolbar is a screen control, it has no place on a printed page. */
 .toolbar {
   display: none;

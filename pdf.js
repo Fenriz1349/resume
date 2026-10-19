@@ -107,8 +107,10 @@ function generateResumePdf() {
   // --- Header: name, title, contact line, location ---
   const name = document.querySelector(".header-main h1").textContent;
   const title = document.querySelector(".title").textContent;
-  const contactItems = Array.from(document.querySelectorAll(".contact li")).map(
-    (item) => item.textContent.trim()
+  // The "↗" external-link marker (see .external-icon in style.css) is dropped here:
+  // it's outside the character set the PDF's base font reliably renders.
+  const contactItems = Array.from(document.querySelectorAll(".contact li")).map((item) =>
+    item.textContent.replace(/\s*↗\s*/g, "").trim()
   );
   const location = document.querySelector(".location").textContent;
 

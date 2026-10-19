@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Julien Cotte — Développeur iOS</title>
 <meta name="description" content="CV de Julien Cotte, développeur iOS spécialisé Clean Architecture, SwiftUI et CI/CD.">
+<!-- Gothic/blackletter display fonts, used only for the name (UnifrakturMaguntia) and
+     section titles (Pirata One) - see --font-name/--font-heading in style.css.
+     Body text stays on the plain sans-serif font for readability. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Pirata+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="print.css" media="print">
 </head>
@@ -32,18 +38,16 @@
       <ul class="contact">
         <li><a href="mailto:julien.cotte@live.fr">julien.cotte@live.fr</a></li>
         <li data-i18n="contact.phone">Téléphone sur demande</li>
-        <li><a href="https://www.linkedin.com/in/julien-c-7a6141292/" target="_blank" rel="noopener">linkedin.com/in/julien-cotte</a></li>
-        <li><a href="https://github.com/Fenriz1349" target="_blank" rel="noopener">github.com/Fenriz1349</a></li>
+        <li><a href="https://www.linkedin.com/in/julien-c-7a6141292/" target="_blank" rel="noopener">linkedin.com/in/julien-cotte <span class="external-icon" aria-hidden="true">↗</span></a></li>
+        <li><a href="https://github.com/Fenriz1349" target="_blank" rel="noopener">github.com/Fenriz1349 <span class="external-icon" aria-hidden="true">↗</span></a></li>
       </ul>
-      <p class="location" data-i18n="header.location">France / Remote — Disponible septembre 2026</p>
+      <p class="location" data-i18n="header.location">France / Remote</p>
     </header>
 
-    <!-- Pitch: 4 short sentences, each in its own <p> so they render as separate lines -->
+    <!-- Pitch: 2 paragraphs (professional, then personal/background), each in its own <p> -->
     <div class="pitch">
-      <p data-i18n="pitch.s1">Développeur iOS issu d'une reconversion professionnelle, avec deux ans d'expérience en environnement enterprise bancaire/assurance.</p>
-      <p data-i18n="pitch.s2">Ma formation est entièrement basée sur des projets concrets : chaque compétence est validée par un projet réel devant un jury professionnel.</p>
-      <p data-i18n="pitch.s3">Je conçois mes projets personnels avec une architecture propre (Clean Architecture), un code maintenable et des pipelines CI/CD robustes, sur les frameworks les plus récents.</p>
-      <p data-i18n="pitch.s4">Mon expérience professionnelle sur une codebase legacy de 11 ans m'a aussi appris à lire et faire évoluer du code ancien, avec une attention particulière à la maintenabilité, à la documentation et à la limitation de l'impact des changements.</p>
+      <p data-i18n="pitch.s1">Développeur iOS, je conçois des applications avec une architecture propre (Clean Architecture), un code maintenable et des pipelines CI/CD robustes. Mon expérience sur une codebase legacy de 11 ans m'a aussi appris à lire et faire évoluer du code ancien, avec une attention particulière à la maintenabilité et à la documentation.</p>
+      <p data-i18n="pitch.s2">Issu d'une reconversion professionnelle, avec une expérience en environnement enterprise bancaire/assurance, ma formation est entièrement basée sur des projets concrets : chaque compétence est validée par un projet réel devant un jury professionnel.</p>
     </div>
 
     <div class="layout">
@@ -117,14 +121,15 @@
           <h2 data-i18n="experience.heading">Expérience professionnelle</h2>
           <article class="entry">
             <div class="entry-head">
-              <h3 data-i18n="experience.axa.title">Alternant développeur iOS — IBM / AXA</h3>
-              <span class="dates">Sept 2024 – Sept 2026</span>
+              <h3 data-i18n="experience.axa.title">Développeur iOS — IBM / AXA</h3>
+              <span class="dates" data-i18n="experience.axa.dates">Depuis sept. 2024</span>
             </div>
             <p class="entry-sub" data-i18n="experience.axa.sub">Projet Discovery — application mobile B2B utilisée par les commerciaux AXA en rendez-vous client</p>
             <ul>
               <li data-i18n="experience.axa.b1">Intervention sur une codebase UIKit/Objective-C de 11 ans sans documentation initiale</li>
               <li data-i18n="experience.axa.b2">Rétro-ingénierie, refactorisation de modules legacy, correction de bugs, nouvelles fonctionnalités</li>
-              <li data-i18n="experience.axa.b3">Rédaction de documentation technique, méthode Agile, environnement multi-équipes</li>
+              <li data-i18n="experience.axa.b3">Alternance transformée en CDI à l'issue de la formation, sur la même mission</li>
+              <li data-i18n="experience.axa.b4">Rédaction de documentation technique, méthode Agile, environnement multi-équipes</li>
             </ul>
           </article>
         </section>
