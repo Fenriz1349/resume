@@ -10,7 +10,7 @@ Personal one-page resume, built with plain HTML/CSS/JS - no framework, no build 
 
 **Status:** v1.0.0 - first stable release.
 
-Live site: _add your GitHub Pages URL here once published_
+Live site: https://fenriz1349.github.io/resume/
 
 ## Features
 
