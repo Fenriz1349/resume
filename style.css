@@ -158,11 +158,19 @@ h1, h2, h3 {
 
 .contact a {
   color: var(--color-primary);
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-color: var(--color-rule);
+  text-underline-offset: 2px;
 }
 
 .contact a:hover {
-  text-decoration: underline;
+  text-decoration-color: currentColor;
+}
+
+/* Small arrow marking a link as external (LinkedIn, GitHub), not shown for email. */
+.external-icon {
+  font-size: 0.85em;
+  color: var(--color-accent);
 }
 
 .location {
